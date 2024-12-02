@@ -1,10 +1,15 @@
 ﻿@page
-@model IndexModel
+@model FiilismittariSovellus.Pages.IndexModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Aloitussivu";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Tervetuloa Fiilismittariin!</h1>
+    <p>Tämä on aloitussivu, jossa voit rekisteröityä tai kirjautua sisään.</p>
+    <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Rekisteröidy</a>
+    <a class="btn btn-secondary" asp-area="Identity" asp-page="/Account/Login">Kirjaudu sisään</a>
 </div>

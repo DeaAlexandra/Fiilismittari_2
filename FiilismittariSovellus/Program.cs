@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using BackEnd.Models;
 using BackEnd.Extensions;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 if (builder.Environment.IsDevelopment())
@@ -21,7 +22,8 @@ builder.Services.AddDbContext<BackEndDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultUI();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
@@ -47,6 +49,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapControllers();
 
 // Call the ApplicationDbEndpoints method
 app.MapApplicationDbEndpoints();
