@@ -294,3 +294,4 @@ C:\Learning\Fiilismittari_2\FiilismittariSovellus\bin\Debug\net8.0\runtimes\win\
 C:\Learning\Fiilismittari_2\FiilismittariSovellus\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Learning\Fiilismittari_2\FiilismittariSovellus\bin\Debug\net8.0\BackEnd.dll
 C:\Learning\Fiilismittari_2\FiilismittariSovellus\bin\Debug\net8.0\BackEnd.pdb
+C:\Learning\Fiilismittari_2\FiilismittariSovellus\obj\Debug\net8.0\FiilismittariSovellus.sourcelink.json
