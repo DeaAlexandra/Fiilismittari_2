@@ -37,6 +37,7 @@ namespace FiilismittariSovellus.Pages
 
             if (user != null)
             {
+                FirstName = user.FirstName;
                 IsUserInfoComplete = !string.IsNullOrEmpty(user.FirstName) && !string.IsNullOrEmpty(user.LastName);
             }
             else
