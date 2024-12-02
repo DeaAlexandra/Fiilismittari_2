@@ -35,3 +35,4 @@ BackEnd/backend.db
 *.db-shm
 *.db-wal
 BackEnd/obj/Debug/net8.0/BackEnd.AssemblyInfo.cs
+BackEnd/obj/Debug/net8.0/BackEnd.AssemblyInfo.cs
