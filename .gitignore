@@ -1,0 +1,14 @@
+
+BackEnd/app.db-shm
+*.db-shm
+*.json
+*.props
+*.cache
+*.cache
+BackEnd/obj/BackEnd.csproj.nuget.dgspec.json
+FiilismittariSovellus/obj/Debug/net8.0/FiilismittariSovellus.sourcelink.json
+/BackEnd/obj
+BackEnd/obj/BackEnd.csproj.nuget.dgspec.json
+/BackEnd/obj
+*.props
+BackEnd/obj/BackEnd.csproj.nuget.g.props
