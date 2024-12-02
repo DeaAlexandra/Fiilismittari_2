@@ -5,6 +5,38 @@
       "PackagePath": "staticwebassets\\FiilismittariSovellus.bundle.scp.css"
     },
     {
+      "Id": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\wwwroot\\Pictures\\Faces\\Emoji_1.png",
+      "PackagePath": "staticwebassets\\Pictures\\Faces\\Emoji_1.png"
+    },
+    {
+      "Id": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\wwwroot\\Pictures\\Faces\\Emoji_2.png",
+      "PackagePath": "staticwebassets\\Pictures\\Faces\\Emoji_2.png"
+    },
+    {
+      "Id": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\wwwroot\\Pictures\\Faces\\Emoji_3.png",
+      "PackagePath": "staticwebassets\\Pictures\\Faces\\Emoji_3.png"
+    },
+    {
+      "Id": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\wwwroot\\Pictures\\Faces\\Emoji_4.png",
+      "PackagePath": "staticwebassets\\Pictures\\Faces\\Emoji_4.png"
+    },
+    {
+      "Id": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\wwwroot\\Pictures\\Faces\\Emoji_5.png",
+      "PackagePath": "staticwebassets\\Pictures\\Faces\\Emoji_5.png"
+    },
+    {
+      "Id": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\wwwroot\\Pictures\\Faces\\Emoji_6.png",
+      "PackagePath": "staticwebassets\\Pictures\\Faces\\Emoji_6.png"
+    },
+    {
+      "Id": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\wwwroot\\Pictures\\Faces\\Emoji_7.png",
+      "PackagePath": "staticwebassets\\Pictures\\Faces\\Emoji_7.png"
+    },
+    {
+      "Id": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\wwwroot\\css\\MoodMeter.css",
+      "PackagePath": "staticwebassets\\css\\MoodMeter.css"
+    },
+    {
       "Id": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
