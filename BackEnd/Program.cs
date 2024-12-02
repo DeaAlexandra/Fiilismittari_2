@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 var builder = WebApplication.CreateBuilder(args);
 
 // Tarkista komentoriviparametrit
+
+/* Ohjelmaa ajetaan komentolla: 
+
+dotnet run --cli
+
+komentoriville*/
 if (args.Length > 0 && args[0] == "cli")
 {
     await RunCommandLineInterface(args);
