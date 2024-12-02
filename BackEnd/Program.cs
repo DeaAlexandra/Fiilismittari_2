@@ -1,8 +1,12 @@
 using BackEnd.Models;
 using BackEnd.Extensions;
 using Microsoft.EntityFrameworkCore;
+using BackEnd;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Tarkista komentoriviparametrit
+
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
