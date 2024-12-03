@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using BackEnd.Models;
 using BackEnd.Extensions;
+using BackEnd.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,13 +17,16 @@ var backendConnectionString = builder.Configuration.GetConnectionString("BackEnd
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(appConnectionString));
-builder.Services.AddDbContext<BackEndDbContext>(options =>
+builder.Services.AddDbContext<BackendDbContext>(options =>
     options.UseSqlite(backendConnectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultUI();
 builder.Services.AddRazorPages();
+
+builder.Services.AddScoped<MoodMeterService>();
 
 var app = builder.Build();
 
@@ -47,8 +51,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
-
-// Call the ApplicationDbEndpoints method
-app.MapApplicationDbEndpoints();
+app.MapControllers();
 
 app.Run();

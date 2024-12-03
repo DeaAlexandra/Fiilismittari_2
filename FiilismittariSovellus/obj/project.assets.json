@@ -8884,28 +8884,24 @@
       "Microsoft.AspNetCore.Identity.UI >= 8.0.8",
       "Microsoft.EntityFrameworkCore >= 8.0.8",
       "Microsoft.EntityFrameworkCore.Sqlite >= 8.0.8",
-      "Microsoft.EntityFrameworkCore.Tools >= 8.0.8"
+      "Microsoft.EntityFrameworkCore.Tools >= 8.0.8",
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 9.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\eltsu\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\paivi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\eltsu\\Documents\\Sasky projektit\\Fiilismittari_2\\FiilismittariSovellus\\FiilismittariSovellus.csproj",
+      "projectUniqueName": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\FiilismittariSovellus.csproj",
       "projectName": "FiilismittariSovellus",
-      "projectPath": "C:\\Users\\eltsu\\Documents\\Sasky projektit\\Fiilismittari_2\\FiilismittariSovellus\\FiilismittariSovellus.csproj",
-      "packagesPath": "C:\\Users\\eltsu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\eltsu\\Documents\\Sasky projektit\\Fiilismittari_2\\FiilismittariSovellus\\obj\\",
+      "projectPath": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\FiilismittariSovellus.csproj",
+      "packagesPath": "C:\\Users\\paivi\\.nuget\\packages\\",
+      "outputPath": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\eltsu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\paivi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8920,8 +8916,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\eltsu\\Documents\\Sasky projektit\\Fiilismittari_2\\BackEnd\\BackEnd.csproj": {
-              "projectPath": "C:\\Users\\eltsu\\Documents\\Sasky projektit\\Fiilismittari_2\\BackEnd\\BackEnd.csproj"
+            "C:\\Learning\\Fiilismittari_2\\BackEnd\\BackEnd.csproj": {
+              "projectPath": "C:\\Learning\\Fiilismittari_2\\BackEnd\\BackEnd.csproj"
             }
           }
         }
@@ -8966,6 +8962,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[8.0.8, )"
+          },
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+            "target": "Package",
+            "version": "[9.0.0, )"
           }
         },
         "imports": [

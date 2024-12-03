@@ -14,7 +14,8 @@
           "Microsoft.AspNetCore.Identity.UI": "8.0.8",
           "Microsoft.EntityFrameworkCore": "8.0.8",
           "Microsoft.EntityFrameworkCore.Sqlite": "8.0.8",
-          "Microsoft.EntityFrameworkCore.Tools": "8.0.8"
+          "Microsoft.EntityFrameworkCore.Tools": "8.0.8",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "9.0.0"
         },
         "runtime": {
           "FiilismittariSovellus.dll": {}

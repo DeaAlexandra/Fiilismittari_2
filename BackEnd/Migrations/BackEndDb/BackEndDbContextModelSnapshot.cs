@@ -18,9 +18,8 @@ namespace BackEnd.Migrations.BackendDb
 
             modelBuilder.Entity("BackEnd.Models.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -45,8 +44,9 @@ namespace BackEnd.Migrations.BackendDb
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Value")
                         .HasColumnType("INTEGER");

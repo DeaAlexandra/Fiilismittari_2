@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using BackEnd.Models;
+using System;
 
 namespace BackEnd.Models
 {
@@ -15,7 +16,7 @@ namespace BackEnd.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=backend.db");
+            optionsBuilder.UseSqlite("Data Source=../BackEnd/backend.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,19 +27,32 @@ namespace BackEnd.Models
                     v => v.ToString("yyyy-MM-dd"),
                     v => DateTime.Parse(v));
         }
+
+        public void EnsureMonthlyTableExists(string tableName)
+        {
+            var sql = $@"
+                CREATE TABLE IF NOT EXISTS {tableName} (
+                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    UserId TEXT NOT NULL,
+                    Date TEXT NOT NULL,
+                    Value INTEGER NOT NULL,
+                    FOREIGN KEY (UserId) REFERENCES Users(Id)
+                )";
+            Database.ExecuteSqlRaw(sql);
+        }
     }
 
     public class User
     {
-        public int Id { get; set; }
-        public required string FirstName { get; set; }
-        public required string LastName { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
     }
 
     public class UserData
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; } = string.Empty;
         public DateTime Date { get; set; }
         public int Value { get; set; }
     }

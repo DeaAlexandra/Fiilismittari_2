@@ -1,49 +1,40 @@
+using System;
 using Microsoft.EntityFrameworkCore;
-using BackEnd.Extensions;
 using BackEnd.Models;
 
-namespace Backend.Models
+namespace BackEnd.Extensions
 {
-    class Program
+    public static class LisaaKayttaja
     {
-        static void Main(string[] args)
+        public static void LisaaUusiKayttaja()
         {
-            while (true)
+            Console.Write("Syötä käyttäjän etunimi: ");
+            var firstName = Console.ReadLine();
+
+            Console.Write("Syötä käyttäjän sukunimi: ");
+            var lastName = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
             {
-                Console.WriteLine("\nValitse toiminto:");
-                Console.WriteLine("1. Lisää käyttäjä");
-                Console.WriteLine("3. Lopeta");
-
-                Console.Write("Valinta: ");
-                var valinta = Console.ReadLine();
-
-                switch (valinta)
-                {
-                    case "1":
-                        LisaaKayttaja();
-                        break;
-                    case "3":
-                        Console.WriteLine("Ohjelma lopetetaan.");
-                        return;
-                    default:
-                        Console.WriteLine("Virheellinen valinta.");
-                        break;
-                }
+                Console.WriteLine("Etunimi ja sukunimi ovat pakollisia.");
+                return;
             }
-        }
 
-        static void LisaaKayttaja()
-        {
-            Console.Write("Syötä käyttäjän nimi: ");
-            var firstname = Console.ReadLine();
+            var optionsBuilder = new DbContextOptionsBuilder<BackendDbContext>();
+            optionsBuilder.UseSqlite("Data Source=../BackEnd/backend.db");
 
-            Console.Write("Syötä käyttäjän sähköpostiosoite: ");
-            var lastname = Console.ReadLine();
-
-            using (var context = new BackendDbContext())
+            using (var context = new BackendDbContext(optionsBuilder.Options))
             {
-                var user = new User { FirstName = firstname, LastName = lastname };
-                BackEndDbContext.Users.Add(user);
+                var user = new User { FirstName = firstName, LastName = lastName };
+                if (context.Users != null)
+                {
+                    context.Users.Add(user);
+                }
+                else
+                {
+                    Console.WriteLine("Error: Users DbSet is null.");
+                    return;
+                }
                 context.SaveChanges();
             }
 

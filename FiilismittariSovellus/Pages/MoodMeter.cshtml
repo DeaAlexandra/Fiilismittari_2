@@ -1,0 +1,56 @@
+@page
+@model FiilismittariSovellus.Pages.MoodMeterModel
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+@{
+    ViewData["Title"] = "Fiilismittari";
+}
+
+<link rel="stylesheet" href="~/css/MoodMeter.css" />
+
+<div class="text-center">
+    <h1 class="display-4">Fiilismittari</h1>
+    <p>Tervetuloa käyttämään fiilismittaria!</p>
+    <h3>@Model.FirstName</h3>
+
+    <p>Valitse fiiliksesi asteikolla 1-7:</p>
+
+    @if (!Model.IsUserInfoComplete)
+    {
+        <div class="alert alert-warning">
+            <p>Ole hyvä ja lisää etunimi ja sukunimi ennen kuin käytät fiilismittaria.</p>
+        </div>
+        <form method="post" asp-page-handler="SaveUserInfo">
+            <div class="form-group">
+                <label for="FirstName">Etunimi</label>
+                <input type="text" class="form-control" id="FirstName" name="FirstName" asp-for="FirstName" required />
+            </div>
+            <div class="form-group">
+                <label for="LastName">Sukunimi</label>
+                <input type="text" class="form-control" id="LastName" name="LastName" asp-for="LastName" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Tallenna</button>
+        </form>
+    }
+    else
+    {
+        <!-- Lisää fiilismittarin käyttöliittymä tähän -->
+        <div class="container">
+            <!-- Kuvat lisätty site.js tiedostossa  -->
+            <div class="row">
+                @for (int i = 1; i <= 7; i++)
+                {
+                    <div class="col">
+                        <form method="post" asp-page-handler="SaveMood">
+                            <input type="hidden" name="value" value="@i" />
+                            <button type="submit" class="btn btn-light mood-button" data-mood="@i">
+                                <div class="mood-value">@i</div>
+                            </button>
+                            <div class="mood-value">@i</div>
+                        </form>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
