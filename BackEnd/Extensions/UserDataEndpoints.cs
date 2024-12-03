@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BackEnd.Extensions
 {
@@ -14,75 +17,22 @@ namespace BackEnd.Extensions
             endpoints.MapGet("/userdatas", async (HttpContext context) =>
             {
                 var db = context.RequestServices.GetRequiredService<BackendDbContext>();
-                return db.UserDatas != null ? Results.Ok(await db.UserDatas.ToListAsync()) : Results.NotFound();
+                var currentMonthTable = $"UserData_{DateTime.Now:yyyy_MM}";
+                var sql = $"SELECT * FROM {currentMonthTable}";
+                var userData = db.UserDatas != null ? await db.UserDatas.FromSqlRaw(sql).ToListAsync() : null;
+                return userData != null ? Results.Ok(userData) : Results.NotFound();
             })
             .WithName("GetUserDatas")
             .WithOpenApi();
 
             endpoints.MapGet("/userdatas/{id}", async (int id, BackendDbContext db) =>
             {
-                if (db.UserDatas == null)
-                {
-                    return Results.NotFound();
-                }
-                var userData = await db.UserDatas.FindAsync(id);
+                var currentMonthTable = $"UserData_{DateTime.Now:yyyy_MM}";
+                var sql = $"SELECT * FROM {currentMonthTable} WHERE Id = {{0}}";
+                var userData = db.UserDatas != null ? await db.UserDatas.FromSqlRaw(sql, id).FirstOrDefaultAsync() : null;
                 return userData != null ? Results.Ok(userData) : Results.NotFound();
             })
             .WithName("GetUserDataById")
-            .WithOpenApi();
-
-            endpoints.MapPost("/userdatas", async (UserData userData, BackendDbContext db) =>
-            {
-                if (db.UserDatas == null)
-                {
-                    return Results.NotFound();
-                }
-                db.UserDatas.Add(userData);
-                await db.SaveChangesAsync();
-                return Results.Created($"/userdatas/{userData.Id}", userData);
-            })
-            .WithName("CreateUserData")
-            .WithOpenApi();
-
-            endpoints.MapPut("/userdatas/{id}", async (int id, UserData updatedUserData, BackendDbContext db) =>
-            {
-                if (db.UserDatas == null)
-                {
-                    return Results.NotFound();
-                }
-                var userData = await db.UserDatas.FindAsync(id);
-                if (userData == null)
-                {
-                    return Results.NotFound();
-                }
-
-                userData.UserId = updatedUserData.UserId;
-                userData.Date = updatedUserData.Date;
-                userData.Value = updatedUserData.Value;
-
-                await db.SaveChangesAsync();
-                return Results.NoContent();
-            })
-            .WithName("UpdateUserData")
-            .WithOpenApi();
-
-            endpoints.MapDelete("/userdatas/{id}", async (int id, BackendDbContext db) =>
-            {
-                if (db.UserDatas == null)
-                {
-                    return Results.NotFound();
-                }
-                var userData = await db.UserDatas.FindAsync(id);
-                if (userData == null)
-                {
-                    return Results.NotFound();
-                }
-
-                db.UserDatas.Remove(userData);
-                await db.SaveChangesAsync();
-                return Results.NoContent();
-            })
-            .WithName("DeleteUserData")
             .WithOpenApi();
         }
     }

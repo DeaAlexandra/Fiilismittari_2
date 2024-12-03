@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using BackEnd.Models;
 using System;
 
 namespace BackEnd.Models
@@ -9,15 +8,12 @@ namespace BackEnd.Models
         public BackendDbContext(DbContextOptions<BackendDbContext> options)
             : base(options)
         {
+            Users = Set<User>();
+            UserDatas = Set<UserData>();
         }
 
-        public DbSet<User>? Users { get; set; }
-        public DbSet<UserData>? UserDatas { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite("Data Source=../BackEnd/backend.db");
-        }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserData> UserDatas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,19 +22,6 @@ namespace BackEnd.Models
                 .HasConversion(
                     v => v.ToString("yyyy-MM-dd"),
                     v => DateTime.Parse(v));
-        }
-
-        public void EnsureMonthlyTableExists(string tableName)
-        {
-            var sql = $@"
-                CREATE TABLE IF NOT EXISTS {tableName} (
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    UserId TEXT NOT NULL,
-                    Date TEXT NOT NULL,
-                    Value INTEGER NOT NULL,
-                    FOREIGN KEY (UserId) REFERENCES Users(Id)
-                )";
-            Database.ExecuteSqlRaw(sql);
         }
     }
 
@@ -55,5 +38,7 @@ namespace BackEnd.Models
         public string UserId { get; set; } = string.Empty;
         public DateTime Date { get; set; }
         public int Value { get; set; }
+        public int Year { get; set; }
+        public int Month { get; set; }
     }
 }

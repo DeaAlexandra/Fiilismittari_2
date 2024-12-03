@@ -1,11 +1,13 @@
 .mood-button {
     margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 0; /* Varmista, että nappien sisältö ei lisää ylimääräistä tilaa */
     position: relative;
-    width: 100px;
-    height: 100px;
+    border: 0px; /* Lisää reunat */
+    width: 80px; /* Voit säätää kokoa */
+    height: 80px; /* Voit säätää kokoa */
+    display: flex; /* Varmista, että sisältö pysyy keskitettynä */
+    justify-content: center; /* Keskittää sisällön vaakasuunnassa */
+    align-items: center; /* Keskittää sisällön pystysuunnassa */
 }
 
 .mood-button img {
@@ -23,4 +25,21 @@
     margin-top: 10px;
     text-align: center;
     font-weight: bold;
+}
+
+.mood-button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.mood-container {
+    display: flex; /* Asettaa elementit riviin */
+    flex-wrap: wrap; /* Rivitä elementit uudelle riville tarvittaessa */
+    justify-content: center; /* Keskittää elementit vaakasuunnassa */
+    align-items: center; /* Keskittää elementit pystysuunnassa */
+    gap: 20px; /* Lisää väliä elementtien välille */
+    max-width: 100%; /* Varmista, että kontti ei ylitä näytön leveyttä */
+    margin: 0 auto; /* Keskittää kontin vaakasuunnassa */
+    padding: 20px; /* Lisää vähän tilaa reunoille */
+    box-sizing: content-box;
 }
