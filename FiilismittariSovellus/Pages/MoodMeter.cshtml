@@ -7,20 +7,26 @@
 }
 
 <link rel="stylesheet" href="~/css/MoodMeter.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 
 <div class="text-center">
     <h1 class="display-4">Fiilismittari</h1>
     <p>Tervetuloa käyttämään fiilismittaria!</p>
-    <h3>@Model.FirstName</h3>
+    <h3>@Model.FirstName @if (Model.TodayMoodValue.HasValue)
+        {
+            <span>(@Model.TodayMoodValue)</span>
+        }
+    </h3>
 
     <p>Valitse fiiliksesi asteikolla 1-7:</p>
 
-    @if (!Model.IsUserInfoComplete)
+    @if (!Model.IsUserInfoComplete || Model.ShowNameForm)
     {
         <div class="alert alert-warning">
             <p>Ole hyvä ja lisää etunimi ja sukunimi ennen kuin käytät fiilismittaria.</p>
         </div>
-        <form method="post" asp-page-handler="SaveUserInfo">
+        <form method="post" asp-page-handler="SaveUserInfo" id="nameForm">
             <div class="form-group">
                 <label for="FirstName">Etunimi</label>
                 <input type="text" class="form-control" id="FirstName" name="FirstName" asp-for="FirstName" required />
@@ -34,23 +40,34 @@
     }
     else
     {
-        <!-- Lisää fiilismittarin käyttöliittymä tähän -->
-        <div class="container">
-            <!-- Kuvat lisätty site.js tiedostossa  -->
-            <div class="row">
-                @for (int i = 1; i <= 7; i++)
-                {
-                    <div class="col">
-                        <form method="post" asp-page-handler="SaveMood">
-                            <input type="hidden" name="value" value="@i" />
-                            <button type="submit" class="btn btn-light mood-button" data-mood="@i">
-                                <div class="mood-value">@i</div>
-                            </button>
-                            <div class="mood-value">@i</div>
-                        </form>
-                    </div>
-                }
-            </div>
-        </div>
+        <form method="post" asp-page-handler="ShowNameForm">
+            <button type="submit" class="btn btn-secondary">Vaihda nimet</button>
+        </form>
     }
+
+    <!-- Lisää fiilismittarin käyttöliittymä tähän -->
+    <div class="container mood-container">
+        <!-- Kuvat lisätty site.js tiedostossa  -->
+        <div class="row">
+            @for (int i = 1; i <= 7; i++)
+            {
+                <div class="col-auto">
+                    <form method="post" asp-page-handler="SaveMood">
+                        <input type="hidden" name="value" value="@i" />
+                        <button type="submit" class="btn btn-light mood-button" data-mood="@i" @(Model.IsUserInfoComplete ?
+                        "" : "disabled")>
+                            <div class="mood-value">@i</div>
+                        </button>
+                        <div class="mood-value">@i</div>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Lisää kuvaajan HTML-elementti -->
+    <div class="container">
+        <canvas id="moodChart"></canvas>
+    </div>
+
 </div>

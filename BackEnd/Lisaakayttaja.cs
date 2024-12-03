@@ -2,7 +2,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using BackEnd.Models;
 
-namespace BackEnd.Extensions
+namespace BackEnd.Services
 {
     public static class LisaaKayttaja
     {
