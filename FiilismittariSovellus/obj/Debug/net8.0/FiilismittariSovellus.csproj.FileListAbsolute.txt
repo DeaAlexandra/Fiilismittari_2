@@ -298,3 +298,6 @@ C:\Learning\Fiilismittari_2\FiilismittariSovellus\obj\Debug\net8.0\Fiilismittari
 C:\Learning\Fiilismittari_2\FiilismittariSovellus\bin\Debug\net8.0\BackEnd.staticwebassets.runtime.json
 C:\Learning\Fiilismittari_2\FiilismittariSovellus\bin\Debug\net8.0\package-lock.json
 C:\Learning\Fiilismittari_2\FiilismittariSovellus\bin\Debug\net8.0\package.json
+C:\Users\eltsu\Documents\Sasky projektit\Fiilismittari_2\FiilismittariSovellus\obj\Debug\net8.0\FiilismittariSovellus.dll
+C:\Users\eltsu\Documents\Sasky projektit\Fiilismittari_2\FiilismittariSovellus\obj\Debug\net8.0\refint\FiilismittariSovellus.dll
+C:\Users\eltsu\Documents\Sasky projektit\Fiilismittari_2\FiilismittariSovellus\obj\Debug\net8.0\FiilismittariSovellus.pdb
