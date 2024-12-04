@@ -123,7 +123,7 @@ static async Task LisaaTietoja(BackendDbContext backendDbContext)
     Console.WriteLine($"Käyttäjän ID: {userId}");
 
     // Lisää tietoa backend-tietokantaan
-    Console.Write("Anna mielialan arvo (1-10): ");
+    Console.Write("Anna mielialan arvo (1-7): ");
     if (int.TryParse(Console.ReadLine(), out int moodValue))
     {
         var moodDataService = new MoodDataService(backendDbContext);

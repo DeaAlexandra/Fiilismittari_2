@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FiilismittariSovellus")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04837e16803f1e088e0f5a2b5ae7aa75f1edbeeb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9cf6cae892aaac913de729c7a8501b0036445230")]
 [assembly: System.Reflection.AssemblyProductAttribute("FiilismittariSovellus")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FiilismittariSovellus")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
