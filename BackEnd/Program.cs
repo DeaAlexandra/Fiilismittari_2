@@ -1,18 +1,17 @@
 using BackEnd.Models;
 using BackEnd.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Identity;
 using System;
 using System.Threading.Tasks;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Tarkista komentoriviparametrit
 if (args.Length > 0 && args[0] == "cli")
 {
-    await RunCommandLineInterface(args);
+    await RunCommandLineInterface(builder);
     return;
 }
 
@@ -43,47 +42,23 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// API-päätepisteet fiilismittarin hallintaan
-app.MapGet("/api/mooddata", async (MoodDataService moodDataService, UserManager<IdentityUser> userManager, HttpContext httpContext) =>
-{
-    var userId = userManager.GetUserId(httpContext.User);
-    if (userId == null)
-    {
-        return Results.BadRequest("User ID not found.");
-    }
-
-    var moodData = await moodDataService.GetTodayMoodData(userId);
-
-    if (moodData == null)
-    {
-        return Results.NotFound("User data not found.");
-    }
-
-    return Results.Ok(moodData.Value);
-});
-
-app.MapPost("/api/mooddata", async (MoodDataService moodDataService, UserData userData) =>
-{
-    if (userData == null)
-    {
-        return Results.BadRequest("Invalid user data.");
-    }
-
-    await moodDataService.SaveMoodValue(userData.UserId, userData.Value);
-    return Results.Ok(userData);
-});
-
 app.Run();
 
-static async Task RunCommandLineInterface(string[] args)
+// Refactored CLI interface with dependency injection
+static async Task RunCommandLineInterface(WebApplicationBuilder builder)
 {
+    var serviceProvider = builder.Services.BuildServiceProvider();
+    var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+    var backendDbContext = serviceProvider.GetRequiredService<BackendDbContext>();
+
     await Task.Run(() =>
     {
         while (true)
         {
             Console.WriteLine("Valitse toiminto:");
             Console.WriteLine("1. Lisää käyttäjä");
-            Console.WriteLine("2. Lopeta");
+            Console.WriteLine("2. Lisää mielialadataa");
+            Console.WriteLine("3. Lopeta");
 
             Console.Write("Valinta: ");
             var valinta = Console.ReadLine();
@@ -91,9 +66,12 @@ static async Task RunCommandLineInterface(string[] args)
             switch (valinta)
             {
                 case "1":
-                    LisaaKayttaja.LisaaUusiKayttaja();
+                    LisaaKayttaja.LisaaUusiKayttaja(userManager);
                     break;
                 case "2":
+                    MoodDataHandler.LisaaTietoja(backendDbContext);
+                    break;
+                case "3":
                     Console.WriteLine("Ohjelma lopetetaan.");
                     return;
                 default:
@@ -102,36 +80,4 @@ static async Task RunCommandLineInterface(string[] args)
             }
         }
     });
-}
-static async Task LisaaTietoja(BackendDbContext backendDbContext)
-{
-    Console.Write("Anna käyttäjän nimi: ");
-    var username = Console.ReadLine();
-
-    // Hae käyttäjän ID BackendDbContextista
-    var userId = await backendDbContext.Users
-        .Where(Users => Users.FirstName + " " + Users.LastName == username)
-        .Select(Users => Users.Id)
-        .FirstOrDefaultAsync();
-
-    if (string.IsNullOrEmpty(userId))
-    {
-        Console.WriteLine("Käyttäjää ei löytynyt.");
-        return;
-    }
-
-    Console.WriteLine($"Käyttäjän ID: {userId}");
-
-    // Lisää tietoa backend-tietokantaan
-    Console.Write("Anna mielialan arvo (1-7): ");
-    if (int.TryParse(Console.ReadLine(), out int moodValue))
-    {
-        var moodDataService = new MoodDataService(backendDbContext);
-        await moodDataService.SaveMoodValue(userId, moodValue);
-        Console.WriteLine("Mielialadata tallennettu onnistuneesti!");
-    }
-    else
-    {
-        Console.WriteLine("Virheellinen arvo. Yritä uudelleen.");
-    }
 }

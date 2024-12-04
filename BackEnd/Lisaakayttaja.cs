@@ -1,44 +1,34 @@
-using System;
-using Microsoft.EntityFrameworkCore;
-using BackEnd.Models;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 
 namespace BackEnd.Services
 {
     public static class LisaaKayttaja
     {
-        public static void LisaaUusiKayttaja()
+        public static async Task LisaaUusiKayttaja(UserManager<IdentityUser> userManager)
         {
-            Console.Write("Syötä käyttäjän etunimi: ");
+            Console.Write("Anna käyttäjän etunimi: ");
             var firstName = Console.ReadLine();
 
-            Console.Write("Syötä käyttäjän sukunimi: ");
+            Console.Write("Anna käyttäjän sukunimi: ");
             var lastName = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
+            var user = new IdentityUser
             {
-                Console.WriteLine("Etunimi ja sukunimi ovat pakollisia.");
-                return;
-            }
+                UserName = firstName + "." + lastName,
+                Email = firstName + "." + lastName + "@example.com"
+            };
 
-            var optionsBuilder = new DbContextOptionsBuilder<BackendDbContext>();
-            optionsBuilder.UseSqlite("Data Source=../BackEnd/backend.db");
+            var result = await userManager.CreateAsync(user, "DefaultPassword123!");
 
-            using (var context = new BackendDbContext(optionsBuilder.Options))
+            if (result.Succeeded)
             {
-                var user = new User { FirstName = firstName, LastName = lastName };
-                if (context.Users != null)
-                {
-                    context.Users.Add(user);
-                }
-                else
-                {
-                    Console.WriteLine("Error: Users DbSet is null.");
-                    return;
-                }
-                context.SaveChanges();
+                Console.WriteLine("Käyttäjä lisätty onnistuneesti!");
             }
-
-            Console.WriteLine("Käyttäjä lisätty onnistuneesti.");
+            else
+            {
+                Console.WriteLine("Virhe käyttäjän luomisessa.");
+            }
         }
     }
 }
