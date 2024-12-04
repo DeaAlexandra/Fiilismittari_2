@@ -16,8 +16,7 @@
     <h3>@Model.FirstName @if (Model.TodayMoodValue.HasValue)
         {
             <span>(@Model.TodayMoodValue)</span>
-        }
-    </h3>
+        }</h3>
 
     <p>Valitse fiiliksesi asteikolla 1-7:</p>
 
@@ -54,7 +53,7 @@
                 <div class="col-auto">
                     <form method="post" asp-page-handler="SaveMood">
                         <input type="hidden" name="value" value="@i" />
-                        <button type="submit" class="btn btn-light mood-button" data-mood="@i" @(Model.IsUserInfoComplete ?
+                        <button type="submit" class="btn mood-button" data-mood="@i" @(Model.IsUserInfoComplete ?
                         "" : "disabled")>
                             <div class="mood-value">@i</div>
                         </button>
@@ -65,9 +64,26 @@
         </div>
     </div>
 
+    <!-- Lisää ylikirjoituskehotus -->
+    @if (TempData["OverwritePrompt"] != null)
+    {
+        <div class="alert alert-warning">
+            <p>Olet jo antanut arvon tälle päivälle. Haluatko ylikirjoittaa sen?</p>
+            <form method="post" asp-page-handler="OverwriteMood">
+                <button type="submit" class="btn btn-danger">Ylikirjoita</button>
+            </form>
+        </div>
+    }
+
     <!-- Lisää kuvaajan HTML-elementti -->
     <div class="container">
         <canvas id="moodChart"></canvas>
     </div>
 
+    <!-- Lisää painikkeet ja slider viikko- ja kuukausinäkymän valitsemiseksi -->
+    <div class="container">
+        <button id="weekView" class="btn btn-primary">Viikkonäkymä</button>
+        <button id="monthView" class="btn btn-secondary">Kuukausinäkymä</button>
+        <input type="range" id="dateRange" min="1" max="31" value="1">
+    </div>
 </div>

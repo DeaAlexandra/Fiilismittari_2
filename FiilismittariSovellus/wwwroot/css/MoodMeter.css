@@ -1,3 +1,15 @@
+body {
+    background-color: #191919 !important; /* Tumma tausta */
+    color: #ffffff !important; /* Valkoinen teksti */
+}
+
+
+
+
+
+
+
+
 .mood-button {
     margin: 10px;
     padding: 0; /* Varmista, että nappien sisältö ei lisää ylimääräistä tilaa */

@@ -18,5 +18,7 @@ html {
 }
 
 body {
+  background-color: #191919 !important; /* Tumma tausta */
+  color: #ffffff !important; /* Valkoinen teksti */
   margin-bottom: 60px;
 }
