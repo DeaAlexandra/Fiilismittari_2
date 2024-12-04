@@ -23,6 +23,12 @@ namespace BackEnd.Services
                 .OrderBy(ud => ud.Date)
                 .ToListAsync();
         }
+        public async Task<UserData?> GetTodayMoodData(string userId)
+        {
+            var today = DateTime.Now.Date;
+            return await _context.UserDatas
+                .FirstOrDefaultAsync(ud => ud.UserId == userId && ud.Date == today);
+        }
 
         public async Task SaveMoodValue(string userId, int value)
         {
