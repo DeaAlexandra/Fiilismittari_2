@@ -49,12 +49,8 @@ namespace FiilismittariSovellus.Pages
                 _logger.LogInformation("User data retrieved: {User}", user);
 
                 // Hae päivän arvo suoraan tietokannasta
-                var today = DateTime.Now.Date;
-                var moodValue = _context.UserDatas
-                    .Where(ud => ud.UserId == userId && ud.Date == today)
-                    .Select(ud => ud.Value)
-                    .FirstOrDefault();
-                TodayMoodValue = moodValue;
+                var moodData = _moodMeterService.GetTodayMoodData(userId);
+                TodayMoodValue = moodData?.Value;
             }
             else
             {
@@ -96,7 +92,31 @@ namespace FiilismittariSovellus.Pages
                 return BadRequest("User ID not found.");
             }
 
+            var today = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("FLE Standard Time")).Date;
+            if (_moodMeterService.MoodValueExists(userId, today))
+            {
+                // Kysy käyttäjältä, haluaako hän ylikirjoittaa arvon
+                TempData["OverwritePrompt"] = true;
+                TempData["MoodValue"] = value;
+                return RedirectToPage();
+            }
+
             _logger.LogInformation("Saving mood value for UserId: {UserId}, Value: {Value}", userId, value);
+            _moodMeterService.SaveMoodValue(userId, value);
+            return RedirectToPage();
+        }
+
+        public IActionResult OnPostOverwriteMood()
+        {
+            var userId = _userManager.GetUserId(User);
+            if (userId == null)
+            {
+                _logger.LogWarning("User ID not found.");
+                return BadRequest("User ID not found.");
+            }
+
+            var value = (int)TempData["MoodValue"];
+            _logger.LogInformation("Overwriting mood value for UserId: {UserId}, Value: {Value}", userId, value);
             _moodMeterService.SaveMoodValue(userId, value);
             return RedirectToPage();
         }

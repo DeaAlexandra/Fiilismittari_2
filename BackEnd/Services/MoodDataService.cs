@@ -16,6 +16,13 @@ namespace BackEnd.Services
             _context = context;
         }
 
+        public async Task<UserData?> GetTodayMoodData(string userId)
+        {
+            var today = DateTime.Now.Date;
+            return await _context.UserDatas
+                .FirstOrDefaultAsync(ud => ud.UserId == userId && ud.Date == today);
+        }
+
         public async Task<List<UserData>> GetMoodDataForUser(string userId)
         {
             return await _context.UserDatas
