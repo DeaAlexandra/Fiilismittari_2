@@ -569,3 +569,7 @@ C:\Users\eltsu\Documents\Sasky projektit\Fiilismittari_2\BackEnd\obj\Debug\net8.
 C:\Learning\Fiilismittari_2\BackEnd\bin\Debug\net8.0\BackEnd.staticwebassets.runtime.json
 C:\Learning\Fiilismittari_2\BackEnd\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Learning\Fiilismittari_2\BackEnd\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\eltsu\Documents\Sasky projektit\Fiilismittari_2\BackEnd\bin\Debug\net8.0\package-lock.json
+C:\Users\eltsu\Documents\Sasky projektit\Fiilismittari_2\BackEnd\bin\Debug\net8.0\BackEnd.staticwebassets.runtime.json
+C:\Users\eltsu\Documents\Sasky projektit\Fiilismittari_2\BackEnd\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\eltsu\Documents\Sasky projektit\Fiilismittari_2\BackEnd\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Embedded.dll
