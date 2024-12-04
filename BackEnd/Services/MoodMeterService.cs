@@ -16,8 +16,7 @@ namespace BackEnd.Services
 
         public UserData? GetTodayMoodData(string userId)
         {
-            var timeZone = TimeZoneInfo.FindSystemTimeZoneById("FLE Standard Time"); // Esimerkki: Suomen aikavyöhyke
-            var today = TimeZoneInfo.ConvertTime(DateTime.Now, timeZone).Date;
+            var today = DateTime.Now.Date;
             return _context.UserDatas
                 .FirstOrDefault(ud => ud.UserId == userId && ud.Date == today);
         }
@@ -27,11 +26,9 @@ namespace BackEnd.Services
             return _context.UserDatas.Any(ud => ud.UserId == userId && ud.Date == date);
         }
 
-        public void SaveMoodValue(string userId, int value)
+        public void SaveMoodValue(string userId, int value, DateTime date)
         {
-            var timeZone = TimeZoneInfo.FindSystemTimeZoneById("FLE Standard Time"); // Esimerkki: Suomen aikavyöhyke
-            var today = TimeZoneInfo.ConvertTime(DateTime.Now, timeZone).Date;
-            var existingMood = _context.UserDatas.FirstOrDefault(ud => ud.UserId == userId && ud.Date == today);
+            var existingMood = _context.UserDatas.FirstOrDefault(ud => ud.UserId == userId && ud.Date == date);
 
             if (existingMood != null)
             {
@@ -43,10 +40,10 @@ namespace BackEnd.Services
                 var userData = new UserData
                 {
                     UserId = userId,
-                    Date = today,
+                    Date = date,
                     Value = value,
-                    Year = today.Year,
-                    Month = today.Month
+                    Year = date.Year,
+                    Month = date.Month
                 };
                 _context.UserDatas.Add(userData);
             }

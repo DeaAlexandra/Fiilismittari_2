@@ -83,7 +83,7 @@ namespace FiilismittariSovellus.Pages
             return RedirectToPage();
         }
 
-        public IActionResult OnPostSaveMood(int value)
+        public IActionResult OnPostSaveMood(int value, string selectedDate)
         {
             var userId = _userManager.GetUserId(User);
             if (userId == null)
@@ -92,17 +92,24 @@ namespace FiilismittariSovellus.Pages
                 return BadRequest("User ID not found.");
             }
 
-            var today = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("FLE Standard Time")).Date;
-            if (_moodMeterService.MoodValueExists(userId, today))
+            var date = DateTime.Parse(selectedDate);
+            if (date > DateTime.Now.Date)
+            {
+                _logger.LogWarning("Cannot save mood value for a future date.");
+                return BadRequest("Cannot save mood value for a future date.");
+            }
+
+            if (_moodMeterService.MoodValueExists(userId, date))
             {
                 // Kysy käyttäjältä, haluaako hän ylikirjoittaa arvon
                 TempData["OverwritePrompt"] = true;
                 TempData["MoodValue"] = value;
+                TempData["SelectedDate"] = date;
                 return RedirectToPage();
             }
 
-            _logger.LogInformation("Saving mood value for UserId: {UserId}, Value: {Value}", userId, value);
-            _moodMeterService.SaveMoodValue(userId, value);
+            _logger.LogInformation("Saving mood value for UserId: {UserId}, Value: {Value}, Date: {Date}", userId, value, date);
+            _moodMeterService.SaveMoodValue(userId, value, date);
             return RedirectToPage();
         }
 
@@ -116,8 +123,9 @@ namespace FiilismittariSovellus.Pages
             }
 
             var value = (int)TempData["MoodValue"];
-            _logger.LogInformation("Overwriting mood value for UserId: {UserId}, Value: {Value}", userId, value);
-            _moodMeterService.SaveMoodValue(userId, value);
+            var selectedDate = (DateTime)TempData["SelectedDate"];
+            _logger.LogInformation("Overwriting mood value for UserId: {UserId}, Value: {Value}, Date: {Date}", userId, value, selectedDate);
+            _moodMeterService.SaveMoodValue(userId, value, selectedDate);
             return RedirectToPage();
         }
 
