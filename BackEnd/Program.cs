@@ -51,7 +51,7 @@ static async Task RunCommandLineInterface(WebApplicationBuilder builder)
     var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
     var backendDbContext = serviceProvider.GetRequiredService<BackendDbContext>();
 
-    await Task.Run(() =>
+    await Task.Run(async () =>
     {
         while (true)
         {
@@ -69,7 +69,7 @@ static async Task RunCommandLineInterface(WebApplicationBuilder builder)
                     LisaaKayttaja.LisaaUusiKayttaja(userManager);
                     break;
                 case "2":
-                    MoodDataHandler.LisaaTietoja(backendDbContext);
+                    await MoodDataHandler.LisaaTietoja(backendDbContext, MoodDataService);
                     break;
                 case "3":
                     Console.WriteLine("Ohjelma lopetetaan.");
