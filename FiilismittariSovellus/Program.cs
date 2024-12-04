@@ -25,8 +25,14 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultUI();
 builder.Services.AddRazorPages();
+builder.Services.AddControllers();
+builder.Services.AddHttpClient("MoodMeterClient", client =>
+{
+    client.BaseAddress = new Uri("https://localhost:5001"); // API:n osoite
+});
 
 builder.Services.AddScoped<MoodMeterService>();
+builder.Services.AddScoped<MoodDataService>(); // Lisää tämä
 
 var app = builder.Build();
 
@@ -52,5 +58,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();
+app.MapUserDataEndpoints();
 
 app.Run();

@@ -566,3 +566,6 @@ C:\Users\eltsu\Documents\Sasky projektit\Fiilismittari_2\BackEnd\obj\Debug\net8.
 C:\Users\eltsu\Documents\Sasky projektit\Fiilismittari_2\BackEnd\obj\Debug\net8.0\BackEnd.pdb
 C:\Users\eltsu\Documents\Sasky projektit\Fiilismittari_2\BackEnd\obj\Debug\net8.0\BackEnd.genruntimeconfig.cache
 C:\Users\eltsu\Documents\Sasky projektit\Fiilismittari_2\BackEnd\obj\Debug\net8.0\ref\BackEnd.dll
+C:\Learning\Fiilismittari_2\BackEnd\bin\Debug\net8.0\BackEnd.staticwebassets.runtime.json
+C:\Learning\Fiilismittari_2\BackEnd\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Learning\Fiilismittari_2\BackEnd\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Embedded.dll

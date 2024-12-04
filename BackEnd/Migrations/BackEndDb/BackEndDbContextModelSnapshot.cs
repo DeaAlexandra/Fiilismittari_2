@@ -44,11 +44,17 @@ namespace BackEnd.Migrations.BackendDb
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Month")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Value")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Year")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
