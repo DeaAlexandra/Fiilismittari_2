@@ -52,9 +52,9 @@
                 data: monthDates.map(() => null), // Alusta arvot null-arvoilla
                 backgroundColor: monthDates.map(() => 'rgba(200, 200, 200, 0.2)'), // Alusta värit harmaalla
                 borderColor: monthDates.map(() => 'rgba(255, 255, 255, 0.8)'), // Vaaleat reunukset
-                borderWidth: 2, // Reunuksen leveys
-                borderRadius: 10, // Pyöristää pylväiden yläreunat
-                barThickness: 20, // Säätää pylväiden leveyttä
+                borderWidth: 5, // Reunuksen leveys
+                borderRadius: 15, // Pyöristää pylväiden yläreunat
+                barThickness: 30, // Säätää pylväiden leveyttä
             }]
         },
         options: {
@@ -79,7 +79,7 @@
                     title: {
                         display: true,
                         text: 'Päivämäärä', // Lisää x-akselin otsikko
-                        color: '#666', // Muuta x-akselin otsikon väriä
+                        color: 'rgba(227, 227, 227, 0.8)', // Muuta x-akselin otsikon väriä
                         font: {
                             family: 'Arial',
                             size: 14,
@@ -87,7 +87,7 @@
                         }
                     },
                     ticks: {
-                        color: '#666', // Muuta x-akselin tekstin väriä
+                        color: 'rgba(227, 227, 227, 0.8)', // Muuta x-akselin tekstin väriä
                     }
                 },
                 y: {
@@ -97,7 +97,7 @@
                     title: {
                         display: true,
                         text: 'Arvo', // Lisää y-akselin otsikko
-                        color: '#666', // Muuta y-akselin otsikon väriä
+                        color: 'rgba(227, 227, 227, 0.8)', // Muuta y-akselin otsikon väriä
                         font: {
                             family: 'Arial',
                             size: 14,
@@ -105,7 +105,7 @@
                         }
                     },
                     ticks: {
-                        color: '#666', // Muuta y-akselin tekstin väriä
+                        color: 'rgba(227, 227, 227, 0.8)', // Muuta y-akselin tekstin väriä
                     }
                 }
             }
@@ -147,30 +147,79 @@
                     const entryDate = new Date(entry.date).toISOString().split('T')[0];
                     return entryDate === date.toISOString().split('T')[0];
                 });
-
-                return 'rgba(227, 227, 227, 0.8)'; // Vaalea reunus, jos ei tietoa
+                if (entry) {
+                    if (entry.value == 1) return 'rgba(227, 227, 227, 0.8)';
+                    if (entry.value == 2) return 'rgba(227, 227, 227, 0.8)'; // Punainen, jos arvo on 2
+                    if (entry.value == 3) return 'rgba(227, 227, 227, 0.8)';
+                    if (entry.value == 4) return 'rgba(227, 227, 227, 0.8)';
+                    if (entry.value == 5) return 'rgba(227, 227, 227, 0.8)';
+                    if (entry.value == 6) return 'rgba(227, 227, 227, 0.8)';
+                    if (entry.value == 7) return 'rgba(227, 227, 227, 0.8)';
+                }
+                return 'rgba(255, 255, 255, 0.8)'; // Vaalea reunus, jos ei tietoa
             });
             
             moodChart.update();
+
+            // Funktio päivittämään kuvaajan näkymä
+            function updateChartView(viewType) {
+                let dates;
+                if (viewType === 'week') {
+                    const sliderValue = parseInt(document.getElementById('dateRange').value, 10);
+                    dates = getWeekDates(year, month, sliderValue);
+                } else {
+                    dates = monthDates;
+                }
+
+                // Päivitä arvot ja värit tietokannasta haettujen arvojen perusteella
+                moodChart.data.labels = dates.map(date => date.toISOString().split('T')[0]);
+                moodChart.data.datasets[0].data = dates.map(date => {
+                    const entry = data.find(entry => {
+                        const entryDate = new Date(entry.date).toISOString().split('T')[0];
+                        return entryDate === date.toISOString().split('T')[0];
+                    });
+                    return entry ? entry.value : null;
+                });
+                moodChart.data.datasets[0].backgroundColor = dates.map(date => {
+                    const entry = data.find(entry => {
+                        const entryDate = new Date(entry.date).toISOString().split('T')[0];
+                        return entryDate === date.toISOString().split('T')[0];
+                    });
+                    if (entry) {
+                        if (entry.value == 1) return 'rgba(157, 4, 0, 0.8)';
+                        if (entry.value == 2) return 'rgba(219, 28, 4, 0.8)'; // Punainen, jos arvo on 2
+                        if (entry.value == 3) return 'rgba(223, 99, 13, 0.8)';
+                        if (entry.value == 4) return 'rgba(242, 174, 5, 0.8)';
+                        if (entry.value == 5) return 'rgba(162, 212, 38, 0.8)';
+                        if (entry.value == 6) return 'rgba(113, 153, 9, 0.8)';
+                        if (entry.value == 7) return 'rgb(89, 120, 7)';
+                    }
+                    return 'rgba(200, 200, 200, 0.2)'; // Harmaa, jos ei tietoa
+                });
+                moodChart.data.datasets[0].borderColor = dates.map(date => {
+                    const entry = data.find(entry => {
+                        const entryDate = new Date(entry.date).toISOString().split('T')[0];
+                        return entryDate === date.toISOString().split('T')[0];
+                    });
+                    if (entry) {
+                        if (entry.value == 1) return 'rgba(227, 227, 227, 0.8)';
+                        if (entry.value == 2) return 'rgba(227, 227, 227, 0.8)'; // Punainen, jos arvo on 2
+                        if (entry.value == 3) return 'rgba(227, 227, 227, 0.8)';
+                        if (entry.value == 4) return 'rgba(227, 227, 227, 0.8)';
+                        if (entry.value == 5) return 'rgba(227, 227, 227, 0.8)';
+                        if (entry.value == 6) return 'rgba(227, 227, 227, 0.8)';
+                        if (entry.value == 7) return 'rgba(227, 227, 227, 0.8)';
+                    }
+                    return 'rgba(227, 227, 227, 0.8)'; // Vaalea reunus, jos ei tietoa
+                });
+
+                moodChart.update();
+            }
+
+            // Lisää tapahtumankuuntelijat painikkeille ja sliderille
+            document.getElementById('weekView').addEventListener('click', () => updateChartView('week'));
+            document.getElementById('monthView').addEventListener('click', () => updateChartView('month'));
+            document.getElementById('dateRange').addEventListener('input', () => updateChartView('week'));
         })
         .catch(error => console.error('Error fetching mood data:', error));
-
-    // Funktio päivittämään kuvaajan näkymä
-    function updateChartView(viewType) {
-        let dates;
-        if (viewType === 'week') {
-            const sliderValue = parseInt(document.getElementById('dateRange').value, 10);
-            dates = getWeekDates(year, month, sliderValue);
-        } else {
-            dates = monthDates;
-        }
-
-        moodChart.data.labels = dates.map(date => date.toISOString().split('T')[0]);
-        moodChart.update();
-    }
-
-    // Lisää tapahtumankuuntelijat painikkeille ja sliderille
-    document.getElementById('weekView').addEventListener('click', () => updateChartView('week'));
-    document.getElementById('monthView').addEventListener('click', () => updateChartView('month'));
-    document.getElementById('dateRange').addEventListener('input', () => updateChartView('week'));
 });
