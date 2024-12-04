@@ -13,10 +13,7 @@
 <div class="text-center">
     <h1 class="display-4">Fiilismittari</h1>
     <p>Tervetuloa käyttämään fiilismittaria!</p>
-    <h3>@Model.FirstName @if (Model.TodayMoodValue.HasValue)
-        {
-            <span>(@Model.TodayMoodValue)</span>
-        }</h3>
+    <h3>@Model.FirstName</h3>
 
     <p>Valitse fiiliksesi asteikolla 1-7:</p>
 
@@ -44,6 +41,13 @@
         </form>
     }
 
+    <!-- Lisää päivämäärän valinta -->
+    <div class="container">
+        <label for="datePicker">Valitse päivämäärä:</label>
+        <input type="date" id="datePicker" name="datePicker" max="@DateTime.Now.ToString("yyyy-MM-dd")"
+            value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+    </div>
+
     <!-- Lisää fiilismittarin käyttöliittymä tähän -->
     <div class="container mood-container">
         <!-- Kuvat lisätty site.js tiedostossa  -->
@@ -51,13 +55,14 @@
             @for (int i = 1; i <= 7; i++)
             {
                 <div class="col-auto">
-                    <form method="post" asp-page-handler="SaveMood">
+                    <form method="post" asp-page-handler="SaveMood" class="mood-form">
                         <input type="hidden" name="value" value="@i" />
-                        <button type="submit" class="btn mood-button" data-mood="@i" @(Model.IsUserInfoComplete ?
-                        "" : "disabled")>
+                        <input type="hidden" id="selectedDate" name="selectedDate"
+                            value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                        <button type="submit" class="btn mood-button" data-mood="@i" @(Model.IsUserInfoComplete ? "" :
+                        "disabled")>
                             <div class="mood-value">@i</div>
                         </button>
-                        <div class="mood-value">@i</div>
                     </form>
                 </div>
             }
@@ -80,10 +85,23 @@
         <canvas id="moodChart"></canvas>
     </div>
 
+    <div class="container">
+        <button id="prevView" class="btn btn-secondary">Edellinen</button>
+        <button id="nextView" class="btn btn-secondary">Seuraava</button>
+        <span id="viewLabel">Viikko: 1</span> <!-- Päivitä tämä elementti -->
+    </div>
+
     <!-- Lisää painikkeet ja slider viikko- ja kuukausinäkymän valitsemiseksi -->
     <div class="container">
         <button id="weekView" class="btn btn-primary">Viikkonäkymä</button>
         <button id="monthView" class="btn btn-secondary">Kuukausinäkymä</button>
-        <input type="range" id="dateRange" min="1" max="31" value="1">
+
     </div>
+
+    <!-- Lisää JavaScript päivittämään valittu päivämäärä -->
+    <script>
+        document.getElementById('datePicker').addEventListener('change', function () {
+            document.getElementById('selectedDate').value = this.value;
+        });
+    </script>
 </div>

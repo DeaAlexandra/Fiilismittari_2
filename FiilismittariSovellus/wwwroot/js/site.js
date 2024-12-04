@@ -35,6 +35,13 @@
         return dates;
     }
 
+    // Funktio, joka laskee viikon numeron
+    function getWeekNumber(date) {
+        const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+        const pastDaysOfYear = (date - firstDayOfYear) / 86400000;
+        return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+    }
+
     // Luo kaikki kuukauden päivämäärät
     const today = new Date();
     const year = today.getFullYear();
@@ -165,10 +172,14 @@
             function updateChartView(viewType) {
                 let dates;
                 if (viewType === 'week') {
-                    const sliderValue = parseInt(document.getElementById('dateRange').value, 10);
-                    dates = getWeekDates(year, month, sliderValue);
+                    const today = new Date();
+                    const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + (currentViewIndex * 7)));
+                    dates = getWeekDates(startOfWeek.getFullYear(), startOfWeek.getMonth(), startOfWeek.getDate());
+                    document.getElementById('viewLabel').textContent = `Viikko: ${getWeekNumber(startOfWeek)}`;
                 } else {
-                    dates = monthDates;
+                    const targetMonth = new Date(today.getFullYear(), today.getMonth() + currentViewIndex, 1);
+                    dates = getMonthDates(targetMonth.getFullYear(), targetMonth.getMonth());
+                    document.getElementById('viewLabel').textContent = `Kuukausi: ${targetMonth.toLocaleString('default', { month: 'long' })}`;
                 }
 
                 // Päivitä arvot ja värit tietokannasta haettujen arvojen perusteella
@@ -217,9 +228,40 @@
             }
 
             // Lisää tapahtumankuuntelijat painikkeille ja sliderille
-            document.getElementById('weekView').addEventListener('click', () => updateChartView('week'));
-            document.getElementById('monthView').addEventListener('click', () => updateChartView('month'));
-            document.getElementById('dateRange').addEventListener('input', () => updateChartView('week'));
+            document.getElementById('weekView').addEventListener('click', () => {
+                currentViewType = 'week';
+                updateChartView('week');
+            });
+            document.getElementById('monthView').addEventListener('click', () => {
+                currentViewType = 'month';
+                updateChartView('month');
+            });
+            
+            let currentViewIndex = 0; // Lisää tämä muuttuja
+
+            document.getElementById('prevView').addEventListener('click', () => {
+                currentViewIndex--;
+                updateChartView(currentViewType);
+            });
+
+            document.getElementById('nextView').addEventListener('click', () => {
+                currentViewIndex++;
+                updateChartView(currentViewType);
+            });
+
+            // Estä tulevaisuuden päivämäärien valinta
+            const datePicker = document.getElementById('datePicker');
+            const todayStr = new Date().toISOString().split('T')[0];
+            datePicker.setAttribute('max', todayStr);
+
+            // Päivitä jokaisen lomakkeen piilotettu päivämääräkenttä käyttäjän valinnan mukaan
+            const moodForms = document.querySelectorAll(".mood-form");
+            datePicker.addEventListener("change", function () {
+                moodForms.forEach(form => {
+                    const selectedDateInput = form.querySelector("#selectedDate");
+                    selectedDateInput.value = datePicker.value;
+                });
+            });
         })
         .catch(error => console.error('Error fetching mood data:', error));
 });
