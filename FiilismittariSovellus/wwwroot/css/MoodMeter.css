@@ -18,7 +18,7 @@ body {
     width: 80px; /* Voit säätää kokoa */
     height: 80px; /* Voit säätää kokoa */
     display: flex; /* Varmista, että sisältö pysyy keskitettynä */
-    justify-content: center; /* Keskittää sisällön vaakasuunnassa */
+    justify-content: space-between; /* Jakaa elementit tasaisesti */
     align-items: center; /* Keskittää sisällön pystysuunnassa */
 }
 
@@ -45,13 +45,24 @@ body {
 }
 
 .mood-container {
+    position: relative;
     display: flex; /* Asettaa elementit riviin */
     flex-wrap: wrap; /* Rivitä elementit uudelle riville tarvittaessa */
     justify-content: center; /* Keskittää elementit vaakasuunnassa */
     align-items: center; /* Keskittää elementit pystysuunnassa */
-    gap: 20px; /* Lisää väliä elementtien välille */
     max-width: 100%; /* Varmista, että kontti ei ylitä näytön leveyttä */
-    margin: 0 auto; /* Keskittää kontin vaakasuunnassa */
-    padding: 20px; /* Lisää vähän tilaa reunoille */
+    padding: 10px; /* Lisää vähän tilaa reunoille */
     box-sizing: content-box;
+}
+
+.chart-container {
+    position: center;
+    height: 80%; /* Säädä kuvaajan korkeutta */
+    width: 80%; /* Säädä kuvaajan leveyttä */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.chart-container canvas {
+    background-color: rgba(47, 47, 47, 0.8); /* Valkoinen väri 80% läpinäkyvyydellä */
 }
