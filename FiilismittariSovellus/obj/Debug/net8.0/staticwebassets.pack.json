@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\FiilismittariSovellus.bundle.scp.css"
     },
     {
+      "Id": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\wwwroot\\Pictures\\4025611.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\4025611.jpg"
+    },
+    {
+      "Id": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\wwwroot\\Pictures\\4069621.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\4069621.jpg"
+    },
+    {
       "Id": "C:\\Learning\\Fiilismittari_2\\FiilismittariSovellus\\wwwroot\\Pictures\\Faces\\Emoji_1.png",
       "PackagePath": "staticwebassets\\Pictures\\Faces\\Emoji_1.png"
     },

@@ -10,7 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 
-<div class="text-center">
+<div class="text-center background-colored">
     <h1 class="display-4">Fiilismittari</h1>
     <p>Tervetuloa käyttämään fiilismittaria!</p>
     <h3>@Model.FirstName</h3>
@@ -22,7 +22,7 @@
         <div class="alert alert-warning">
             <p>Ole hyvä ja lisää etunimi ja sukunimi ennen kuin käytät fiilismittaria.</p>
         </div>
-        <form method="post" asp-page-handler="SaveUserInfo" id="nameForm">
+        <form method="post" asp-page-handler="SaveUserInfo" id="nameForm" class="form-container">
             <div class="form-group">
                 <label for="FirstName">Etunimi</label>
                 <input type="text" class="form-control" id="FirstName" name="FirstName" asp-for="FirstName" required />
@@ -36,13 +36,13 @@
     }
     else
     {
-        <form method="post" asp-page-handler="ShowNameForm">
+        <form method="post" asp-page-handler="ShowNameForm" class="form-container">
             <button type="submit" class="btn btn-secondary">Vaihda nimet</button>
         </form>
     }
 
     <!-- Lisää päivämäärän valinta -->
-    <div class="container">
+    <div class="container calendar-container">
         <label for="datePicker">Valitse päivämäärä:</label>
         <input type="date" id="datePicker" name="datePicker" max="@DateTime.Now.ToString("yyyy-MM-dd")"
             value="@DateTime.Now.ToString("yyyy-MM-dd")" />
@@ -85,17 +85,16 @@
         <canvas id="moodChart"></canvas>
     </div>
 
-    <div class="container">
-        <button id="prevView" class="btn btn-secondary">Edellinen</button>
-        <button id="nextView" class="btn btn-secondary">Seuraava</button>
+    <div class="container view-buttons-container">
+        <button id="prevView" class="btn btn-secondary view-button">Edellinen</button>
+        <button id="nextView" class="btn btn-secondary view-button">Seuraava</button>
         <span id="viewLabel">Viikko: 1</span> <!-- Päivitä tämä elementti -->
     </div>
 
     <!-- Lisää painikkeet ja slider viikko- ja kuukausinäkymän valitsemiseksi -->
-    <div class="container">
-        <button id="weekView" class="btn btn-primary">Viikkonäkymä</button>
-        <button id="monthView" class="btn btn-secondary">Kuukausinäkymä</button>
-
+    <div class="container view-buttons-container">
+        <button id="weekView" class="btn btn-primary week-button view-button">Viikkonäkymä</button>
+        <button id="monthView" class="btn btn-secondary month-button view-button">Kuukausinäkymä</button>
     </div>
 
     <!-- Lisää JavaScript päivittämään valittu päivämäärä -->
