@@ -5,22 +5,25 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+
 }
 
-a {
-  color: #0077cc;
+.navbar {
+  background-color: rgba(221, 221, 221, 0.9); /* Tumma tausta, hieman läpinäkyvä */
+  color: black !important;
 }
+
 
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #494F3F; /* Sininen tausta */
+  border-color: #494F3F; /* Sininen reunus */
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  color: #000000;
+  background-color: #494F3F; /* Sininen tausta */
+  border-color: #494F3F; /* Sininen reunus */
 }
 
 .border-top {

@@ -26,6 +26,42 @@ body {
   background-position: fixed;
 }
 
+a {
+  color: rgba(221, 221, 221, 0.9) !important; /* Valkoinen teksti */
+}
+
+.navbar {
+  background-color: rgba(221, 221, 221, 0.9); /* Tumma tausta, hieman läpinäkyvä */
+}
+
+.nav-link-text {
+    color: #000000 !important; /* Tumma teksti */
+}
+
+
+.navbar-brand {
+    color: #000000 !important; /* Tumma teksti */
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+    color: #333333 !important; /* Tummempi teksti hover-tilassa */
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  color: #fff;
+  background-color: #494F3F; /* Sininen tausta */
+  border-color: #494F3F; /* Sininen reunus */
+}
+
+.footer a {
+    color: #000000 !important; /* Tumma teksti footerin linkeille */
+}
+
+.footer a:hover {
+    color: #333333 !important; /* Tummempi teksti hover-tilassa footerin linkeille */
+}
+
 .index-container {
   display: flex;
   justify-content: center;
@@ -52,7 +88,9 @@ body {
 .index-btn {
   display: block;
   width: 100%;
-  margin-bottom: 10px;
+  padding: .5rem 1rem;
+  font-size: 1.25rem;
+  border-radius: .3rem;
 }
 
 .login-container {
@@ -60,6 +98,10 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh; /* Koko näkymän korkeus */
+}
+
+.login-btn {
+  color: #ffffff; /* Valkoinen teksti */
 }
 
 .text-center {
@@ -70,6 +112,57 @@ body {
   display: block;
   width: 100%;
   margin-bottom: 10px;
+}
+
+.form-label {
+  color: #000000; /* Valkoinen teksti */
+
+}
+
+.form-label-light {
+  color: #ffffff; /* Valkoinen teksti */
+
+}
+
+.btn-primary {
+  background-color: #494F3F; /* Sininen tausta */
+  border-color: #494F3F; /* Sininen reunus */
+  color: #fff; /* Valkoinen teksti */
+  padding: 10px 20px; /* Lisää täyttöä */
+  border-radius: 5px; /* Pyöristetyt kulmat */
+  cursor: pointer; /* Vaihda kursori osoittimeksi */
+}
+
+.btn-primary:hover {
+  background-color: #3C4133; /* Tummempi sininen hover-tilassa */
+  border-color: #3C4133; /* Tummempi sininen reunus hover-tilassa */
+}
+
+.btn-secondary {
+  background-color: #B9AFA7; /* Harmaa tausta */
+  border-color: #B9AFA7; /* Harmaa reunus */
+  color: black !important ; /* Musta teksti */
+  padding: 10px 20px; /* Lisää täyttöä */
+  border-radius: 5px; /* Pyöristetyt kulmat */
+  cursor: pointer; /* Vaihda kursori osoittimeksi */
+}
+
+.btn-secondary:hover {
+  background-color: #928376; /* Tummempi harmaa hover-tilassa */
+  border-color: #928376; /* Tummempi harmaa reunus hover-tilassa */
+}
+
+/* Voit määrittää eri värejä eri nappeille */
+.btn-primary:focus {
+  background-color: #3C4133; /* Tummempi sininen hover-tilassa */
+  border-color: #3C4133; /* Tummempi sininen reunus hover-tilassa */
+  box-shadow: 0 0 0 3px rgba(185, 175, 167, 0.5) !important; /* Harmaa outline */
+}
+
+.btn-secondary:focus {
+  box-shadow: 0 0 0 3px rgba(146, 131, 118, 0.5); /* Tummempi harmaa outline */
+  background-color: #928376; /* Tummempi harmaa hover-tilassa */
+  border-color: #928376; /* Tummempi harmaa reunus hover-tilassa */
 }
 
 .footer {

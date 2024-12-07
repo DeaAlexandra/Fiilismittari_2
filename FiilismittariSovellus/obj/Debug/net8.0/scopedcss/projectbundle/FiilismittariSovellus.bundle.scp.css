@@ -6,22 +6,27 @@ a.navbar-brand[b-l06m5frfw3] {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+  color: black !important;
 }
 
-a[b-l06m5frfw3] {
-  color: #0077cc;
+.navbar[b-l06m5frfw3] {
+  background-color: rgba(221, 221, 221, 0.9); /* Tumma tausta, hieman läpinäkyvä */
+  color: black !important;
+}
+.navbar-brand[b-l06m5frfw3], .nav-link[b-l06m5frfw3] {
+  color: black !important; /* Tumma teksti */
 }
 
 .btn-primary[b-l06m5frfw3] {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #494F3F; /* Sininen tausta */
+  border-color: #494F3F; /* Sininen reunus */
 }
 
 .nav-pills .nav-link.active[b-l06m5frfw3], .nav-pills .show > .nav-link[b-l06m5frfw3] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  color: #000000;
+  background-color: #494F3F; /* Sininen tausta */
+  border-color: #494F3F; /* Sininen reunus */
 }
 
 .border-top[b-l06m5frfw3] {
