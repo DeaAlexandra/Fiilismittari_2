@@ -284,3 +284,6 @@ C:\Learning\Fiilismittari_2\AdminTool\obj\Debug\net8.0\refint\AdminTool.dll
 C:\Learning\Fiilismittari_2\AdminTool\obj\Debug\net8.0\AdminTool.pdb
 C:\Learning\Fiilismittari_2\AdminTool\obj\Debug\net8.0\AdminTool.genruntimeconfig.cache
 C:\Learning\Fiilismittari_2\AdminTool\obj\Debug\net8.0\ref\AdminTool.dll
+C:\Learning\Fiilismittari_2\AdminTool\bin\Debug\net8.0\BackEnd.staticwebassets.runtime.json
+C:\Learning\Fiilismittari_2\AdminTool\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Learning\Fiilismittari_2\AdminTool\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Embedded.dll

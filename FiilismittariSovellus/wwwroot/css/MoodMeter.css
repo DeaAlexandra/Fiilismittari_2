@@ -43,8 +43,8 @@ body {
     
 }
 .btn-primary {
-    background-color: #007bff; /* Sininen tausta */
-    border-color: #007bff; /* Sininen reunus */
+    background-color: #494F3F; /* Sininen tausta */
+    border-color: #494F3F; /* Sininen reunus */
     color: #fff; /* Valkoinen teksti */
     padding: 10px 20px; /* Lisää täyttöä */
     border-radius: 5px; /* Pyöristetyt kulmat */
@@ -52,13 +52,13 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #0056b3; /* Tummempi sininen hover-tilassa */
-    border-color: #0056b3; /* Tummempi sininen reunus hover-tilassa */
+    background-color: #3C4133; /* Tummempi sininen hover-tilassa */
+    border-color: #3C4133; /* Tummempi sininen reunus hover-tilassa */
 }
 
 .btn-secondary {
-    background-color: #6c757d; /* Harmaa tausta */
-    border-color: #6c757d; /* Harmaa reunus */
+    background-color: #B9AFA7; /* Harmaa tausta */
+    border-color: #B9AFA7; /* Harmaa reunus */
     color: #fff; /* Valkoinen teksti */
     padding: 10px 20px; /* Lisää täyttöä */
     border-radius: 5px; /* Pyöristetyt kulmat */
@@ -66,8 +66,8 @@ body {
 }
 
 .btn-secondary:hover {
-    background-color: #5a6268; /* Tummempi harmaa hover-tilassa */
-    border-color: #545b62; /* Tummempi harmaa reunus hover-tilassa */
+    background-color: #928376; /* Tummempi harmaa hover-tilassa */
+    border-color: #928376; /* Tummempi harmaa reunus hover-tilassa */
 }
 
 /* Erilliset luokat eri kohdissa oleville napeille */
@@ -101,8 +101,8 @@ body {
 
 /* Varoitusviestin tyylit */
 .alert-warning {
-    background-color: #ffc107; /* Keltainen tausta */
-    color: #856404; /* Tumma teksti */
+    background-color: #B49151; /* Keltainen tausta */
+    color: #000000; /* Tumma teksti */
     padding: 10px; /* Lisää täyttöä */
     border-radius: 5px; /* Pyöristetyt kulmat */
     margin: 0 auto; /* Keskittää elementin vaakasuunnassa */
