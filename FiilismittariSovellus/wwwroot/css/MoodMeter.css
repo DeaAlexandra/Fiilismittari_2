@@ -1,15 +1,115 @@
+/* Yleiset tyylit */
 body {
-    background-color: #191919 !important; /* Tumma tausta */
+    color: #ffffff !important; /* Valkoinen teksti */
+    background-image: url('/Pictures/4069621.jpg') !important; /* Taustakuva */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: fixed;
+}
+
+/* Taustaväri ja teksti */
+.background-colored {
+    background-color: #222220 !important; /* Tumma tausta */
     color: #ffffff !important; /* Valkoinen teksti */
 }
 
+/* Lomakkeen tyylit */
+.form-container {
+    max-width: 500px; /* Rajaa lomakkeen leveyttä */
+    margin: 0 auto; /* Keskittää lomakkeen */
+    padding: 20px; /* Lisää täyttöä */
+    background-color: rgba(34, 34, 32, 0.9); /* Tumma tausta, hieman läpinäkyvä */
+    border-radius: 10px; /* Pyöristetyt kulmat */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Lisää varjo */
+}
 
+.form-group {
+    margin-bottom: 15px; /* Lisää väliä lomakekenttien väliin */
+}
 
+.form-control {
+    width: 100%; /* Lomakekentät täyttävät koko leveyden */
+    padding: 10px; /* Lisää täyttöä */
+    border: 1px solid #ccc; /* Lisää reunus */
+    border-radius: 5px; /* Pyöristetyt kulmat */
+    background-color: #fff; /* Valkoinen tausta */
+    color: #000; /* Musta teksti */
+}
 
+/* Painikkeiden tyylit */
 
+.btn {
+    width: 200px; /* Painikkeet täyttävät koko leveyden */
+    
+}
+.btn-primary {
+    background-color: #007bff; /* Sininen tausta */
+    border-color: #007bff; /* Sininen reunus */
+    color: #fff; /* Valkoinen teksti */
+    padding: 10px 20px; /* Lisää täyttöä */
+    border-radius: 5px; /* Pyöristetyt kulmat */
+    cursor: pointer; /* Vaihda kursori osoittimeksi */
+}
 
+.btn-primary:hover {
+    background-color: #0056b3; /* Tummempi sininen hover-tilassa */
+    border-color: #0056b3; /* Tummempi sininen reunus hover-tilassa */
+}
 
+.btn-secondary {
+    background-color: #6c757d; /* Harmaa tausta */
+    border-color: #6c757d; /* Harmaa reunus */
+    color: #fff; /* Valkoinen teksti */
+    padding: 10px 20px; /* Lisää täyttöä */
+    border-radius: 5px; /* Pyöristetyt kulmat */
+    cursor: pointer; /* Vaihda kursori osoittimeksi */
+}
 
+.btn-secondary:hover {
+    background-color: #5a6268; /* Tummempi harmaa hover-tilassa */
+    border-color: #545b62; /* Tummempi harmaa reunus hover-tilassa */
+}
+
+/* Erilliset luokat eri kohdissa oleville napeille */
+.btn-save {
+    background-color: #28a745; /* Vihreä tausta */
+    border-color: #28a745; /* Vihreä reunus */
+    color: #fff; /* Valkoinen teksti */
+    padding: 10px 20px; /* Lisää täyttöä */
+    border-radius: 5px; /* Pyöristetyt kulmat */
+    cursor: pointer; /* Vaihda kursori osoittimeksi */
+}
+
+.btn-save:hover {
+    background-color: #218838; /* Tummempi vihreä hover-tilassa */
+    border-color: #1e7e34; /* Tummempi vihreä reunus hover-tilassa */
+}
+
+.btn-overwrite {
+    background-color: #dc3545; /* Punainen tausta */
+    border-color: #dc3545; /* Punainen reunus */
+    color: #fff; /* Valkoinen teksti */
+    padding: 10px 20px; /* Lisää täyttöä */
+    border-radius: 5px; /* Pyöristetyt kulmat */
+    cursor: pointer; /* Vaihda kursori osoittimeksi */
+}
+
+.btn-overwrite:hover {
+    background-color: #c82333; /* Tummempi punainen hover-tilassa */
+    border-color: #bd2130; /* Tummempi punainen reunus hover-tilassa */
+}
+
+/* Varoitusviestin tyylit */
+.alert-warning {
+    background-color: #ffc107; /* Keltainen tausta */
+    color: #856404; /* Tumma teksti */
+    padding: 10px; /* Lisää täyttöä */
+    border-radius: 5px; /* Pyöristetyt kulmat */
+    margin: 0 auto; /* Keskittää elementin vaakasuunnassa */
+    width: fit-content; /* Asettaa leveyden sisällön mukaan */
+}
+
+/* Moodin valintanappien tyylit */
 .mood-button {
     margin: 10px;
     padding: 0; /* Varmista, että nappien sisältö ei lisää ylimääräistä tilaa */
@@ -18,7 +118,7 @@ body {
     width: 80px; /* Voit säätää kokoa */
     height: 80px; /* Voit säätää kokoa */
     display: flex; /* Varmista, että sisältö pysyy keskitettynä */
-    justify-content: space-between; /* Jakaa elementit tasaisesti */
+    justify-content: center; /* Keskittää sisällön vaakasuunnassa */
     align-items: center; /* Keskittää sisällön pystysuunnassa */
 }
 
@@ -44,6 +144,7 @@ body {
     cursor: not-allowed;
 }
 
+/* Moodin valintakontin tyylit */
 .mood-container {
     position: relative;
     display: flex; /* Asettaa elementit riviin */
@@ -55,6 +156,7 @@ body {
     box-sizing: content-box;
 }
 
+/* Kuvaajan tyylit */
 .chart-container {
     position: center;
     height: 80%; /* Säädä kuvaajan korkeutta */
@@ -64,5 +166,28 @@ body {
 }
 
 .chart-container canvas {
-    background-color: rgba(47, 47, 47, 0.8); /* Valkoinen väri 80% läpinäkyvyydellä */
+    background-color: rgba(47, 47, 47, 0.8); /* Tumma tausta, 80% läpinäkyvä */
+}
+
+/* Näkymän valintanappien tyylit */
+.view-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Väli nappien välillä */
+    
+}
+
+.view-button {
+    width: 200px;
+    font-size: 14px; /* Pienentää tekstin kokoa */
+    margin-bottom: 20px; /* Lisää väliä alapuolelle */
+}
+
+.view-label {
+    display: block;
+    width: 100%;
+    text-align: center;
+
+
 }

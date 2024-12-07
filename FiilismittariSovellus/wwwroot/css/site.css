@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  
 }
 
 @media (min-width: 768px) {
@@ -18,7 +19,66 @@ html {
 }
 
 body {
-  background-color: #191919 !important; /* Tumma tausta */
   color: #ffffff !important; /* Valkoinen teksti */
-  margin-bottom: 60px;
+  background-image: url('/Pictures/4069621.jpg') !important; /* Taustakuva */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: fixed;
+}
+
+.index-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh; /* Koko näkymän korkeus */
+}
+
+.index-left {
+  background-color: rgba(34, 34, 32, 0.5); /* Tumma tausta, 50% läpinäkyvä */
+  padding: 20px; /* Lisää täyttöä */
+  border-radius: 10px; /* Pyöristetyt kulmat */
+  color: #ffffff; /* Valkoinen teksti */
+}
+
+.vertical-line {
+  border-left: 2px solid #000; /* Pystyviiva */
+  height: 100%; /* Koko näkymän korkeus */
+}
+
+.index-text-center {
+  text-align: center;
+}
+
+.index-btn {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Koko näkymän korkeus */
+}
+
+.text-center {
+  text-align: center;
+}
+
+.index-btn {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.footer {
+  position: relative !important; /* Muuta position relativeksi */
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+  color: #ffffff; /* Valkoinen teksti */
+  text-align: center;
+  padding: 10px 0;
 }

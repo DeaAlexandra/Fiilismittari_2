@@ -7,9 +7,20 @@
     ViewData["Title"] = "Aloitussivu";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Tervetuloa Fiilismittariin!</h1>
-    <p>Tämä on aloitussivu, jossa voit rekisteröityä tai kirjautua sisään.</p>
-    <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Rekisteröidy</a>
-    <a class="btn btn-secondary" asp-area="Identity" asp-page="/Account/Login">Kirjaudu sisään</a>
+<div class="container index-container">
+    <div class="row">
+        <div class="col-md-6 text-center index-left">
+            <h1 class="display-4">Tervetuloa Fiilismittariin!</h1>
+            <p>Tämä on aloitussivu, jossa voit rekisteröityä tai kirjautua sisään.</p>
+            <p>Fiilismittari on sovellus, jonka avulla voit seurata ja analysoida mielialaasi päivittäin. Rekisteröidy
+                ja kirjaudu sisään aloittaaksesi.</p>
+        </div>
+        <div class="col-md-1 d-flex justify-content-center align-items-center">
+            <div class="vertical-line"></div>
+        </div>
+        <div class="col-md-5 text-center index-text-center">
+            <a class="btn btn-primary index-btn mb-3" asp-area="Identity" asp-page="/Account/Register">Rekisteröidy</a>
+            <a class="btn btn-secondary index-btn" asp-area="Identity" asp-page="/Account/Login">Kirjaudu sisään</a>
+        </div>
+    </div>
 </div>
