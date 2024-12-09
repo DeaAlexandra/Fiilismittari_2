@@ -43,6 +43,7 @@ button.accept-policy {
 }
 
 .footer {
+  color: rgba(221, 221, 221, 0.9) !important; /* Valkoinen teksti */
   position: absolute;
   bottom: 0;
   width: 100%;

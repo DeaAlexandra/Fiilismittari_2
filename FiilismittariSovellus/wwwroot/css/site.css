@@ -166,12 +166,12 @@ a {
 }
 
 .footer {
+  color: rgba(221, 221, 221, 0.9) !important; /* Valkoinen teksti */
   position: relative !important; /* Muuta position relativeksi */
   bottom: 0;
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
-  color: #ffffff; /* Valkoinen teksti */
   text-align: center;
   padding: 10px 0;
 }

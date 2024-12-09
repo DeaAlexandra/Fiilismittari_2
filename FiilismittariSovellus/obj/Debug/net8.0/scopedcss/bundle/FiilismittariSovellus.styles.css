@@ -6,16 +6,14 @@ a.navbar-brand[b-l06m5frfw3] {
   white-space: normal;
   text-align: center;
   word-break: break-all;
-  color: black !important;
+
 }
 
 .navbar[b-l06m5frfw3] {
   background-color: rgba(221, 221, 221, 0.9); /* Tumma tausta, hieman läpinäkyvä */
   color: black !important;
 }
-.navbar-brand[b-l06m5frfw3], .nav-link[b-l06m5frfw3] {
-  color: black !important; /* Tumma teksti */
-}
+
 
 .btn-primary[b-l06m5frfw3] {
   color: #fff;
@@ -46,6 +44,7 @@ button.accept-policy[b-l06m5frfw3] {
 }
 
 .footer[b-l06m5frfw3] {
+  color: rgba(221, 221, 221, 0.9) !important; /* Valkoinen teksti */
   position: absolute;
   bottom: 0;
   width: 100%;
