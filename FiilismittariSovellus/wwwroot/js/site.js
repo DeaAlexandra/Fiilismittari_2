@@ -99,7 +99,7 @@
                 },
                 y: {
                     beginAtZero: true,
-                    min: 1,
+                    min: 0,
                     max: 7,
                     title: {
                         display: true,
